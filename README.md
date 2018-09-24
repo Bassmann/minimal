@@ -1,7 +1,10 @@
 # Minimal
 
-Personal blog theme powered by [Hugo](https://gohugo.io).
-A live demo is available [here](https://themes.gohugo.io/theme/minimal/).
+This is a fork of the original minimal Personal blog theme powered by
+[Hugo](https://gohugo.io). I want to change a few things e.g. remove unneccessary java
+script, hence the fork.
+
+A live demo of the original theme is available [here](https://themes.gohugo.io/theme/minimal/).
 
 ## Installation
 
