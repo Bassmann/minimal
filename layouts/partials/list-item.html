@@ -10,15 +10,19 @@
         {{ else if eq "bitbucket" $repoHost }}
             {{ printf "https://bitbucket.org/%s/%s/" $.Site.Params.bitbucketUsername . | $.Scratch.Set "link" }}
         {{ end }}
+    {{ else}}
+        {{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006") | $.Scratch.Set "subheader" }}
     {{ end }}
+
     {{ with .Params.link }} {{ $.Scratch.Set "link" . }} {{ end }}
 
-    {{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006") | $.Scratch.Set "subheader" }}
-    {{ with .Description }} {{ $.Scratch.Set "subheader" . }} {{ end }}
-
+    
     <h4><a href="{{ .Scratch.Get "link" }}">{{ .Title }}</a></h4>
-    <h5>{{ $.Scratch.Get "subheader" }}</h5>
-    <h5>{{ .ReadingTime }} minute read</h5>
+    {{ $dateheader := $.Scratch.Get "subheader" }}
+    {{ if $dateheader }}
+        <h5>{{ $.Scratch.Get "subheader" }}</h5>
+        <h5>{{ .ReadingTime }} minute read</h5>
+    {{ end }}
     {{ partial "tags" . }}
 
 </div>
