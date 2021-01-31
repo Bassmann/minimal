@@ -6,6 +6,7 @@
 
     <br> <div class="text-justify">{{ .Content }}</div>
 
+    {{ partial "share-buttons.html" . }}
     <!-- related posts with the same tags -->
     {{ $related := first 3 (where (where (where .Site.Pages.ByDate.Reverse ".Type" "==" "post") ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
 
