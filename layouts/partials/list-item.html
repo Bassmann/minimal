@@ -9,14 +9,17 @@
             {{ printf "https://gitlab.com/%s/%s/" $.Site.Params.gitlabUsername . | $.Scratch.Set "link" }}
         {{ else if eq "bitbucket" $repoHost }}
             {{ printf "https://bitbucket.org/%s/%s/" $.Site.Params.bitbucketUsername . | $.Scratch.Set "link" }}
+        {{ else if eq "codeberg" $repoHost}}
+            {{ printf "https://codeberg.org/%s/%s/" $.Site.Params.codebergUsername . | $.Scratch.Set "link" }}
         {{ end }}
+
     {{ else}}
         {{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006") | $.Scratch.Set "subheader" }}
     {{ end }}
 
     {{ with .Params.link }} {{ $.Scratch.Set "link" . }} {{ end }}
 
-    
+
     <h4><a href="{{ .Scratch.Get "link" }}">{{ .Title }}</a></h4>
     {{ $dateheader := $.Scratch.Get "subheader" }}
     {{ if $dateheader }}
