@@ -6,15 +6,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ .Title }}</title>
         {{ if .Site.Params.favicon }}
-            <link rel="icon" href="{{ .Site.Params.favicon | absURL }}">
+        <link rel="icon" href="{{ .Site.Params.favicon | absURL }}">
         {{ end }}
         {{ partial "css" . }} {{ partial "js" . }} {{ hugo.Generator }}
         {{ with .OutputFormats.Get "RSS" }}
-            <link href="{{ .RelPermalink }}" rel="alternate" type="{{ .MediaType.Type }}" title="{{ $.Site.Title }}" />
-            <link href="{{ .RelPermalink }}" rel="feed" type="{{ .MediaType.Type }}" title="{{ $.Site.Title }}" />
+        <link href="{{ .RelPermalink }}" rel="alternate" type="{{ .MediaType.Type }}" title="{{ $.Site.Title }}" />
+        <link href="{{ .RelPermalink }}" rel="feed" type="{{ .MediaType.Type }}" title="{{ $.Site.Title }}" />
         {{ end }}
 
-        {{ if .Site.GoogleAnalytics }}
+        {{ if .Site.Config.Services.GoogleAnalytics.ID }}
             <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.GoogleAnalytics }}"></script>
             <script>
               window.dataLayer = window.dataLayer || [];
