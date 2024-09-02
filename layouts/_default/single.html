@@ -12,13 +12,13 @@
 
     {{ if $related }}
 
-        <h4 class="page-header">Related</h4>
+    <h4 class="page-header">Related</h4>
 
-        {{ range $related }} {{ partial "list-item" . }} {{ end }}
+    {{ range $related }} {{ partial "list-item" . }} {{ end }}
 
     {{ end }}
 
-    {{ if and .Site.DisqusShortname (not .Params.disableComments) }}
+    {{ if and .Site.Config.Services.Disqus.Shortname (not .Params.disableComments) }}
 
         <h4 class="page-header">Comments</h4>
 
